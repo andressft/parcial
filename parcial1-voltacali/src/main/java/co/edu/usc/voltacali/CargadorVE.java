@@ -5,6 +5,16 @@ package co.edu.usc.voltacali;
 
 public class CargadorVE {
 
+    public enum TipoConector {TIPO_1, TIPO_2, CCS2, CHADEMO, GBT}
+    public enum TipoCargador {MURAL, PEDESTAL, RAPIDO_DC, ULTRARRAPIDO, PORTATIL, BIDIRECCIONAL_V2G}
+    public enum tipoUbicacion {CENTRO_COMERCIAL, UNIVERSIDAD, ESTACION_SERVICIO, PARQUEADERO_PUBLICO, RESIDENCIAL, HOTEL, TERMINAL, FLOTA_CORPORATIVA}
+
+    public static int totalCargadores = 0;
+    public static int totalPuestosParqueo = 0;
+    public static double LIMITE_RED = 50.0;
+    public static double INCREMENTO_DEFECTO = 5.0;
+
+
     private String fabricante;
     private int anioInstalacion;
     private int voltajeNominal;
@@ -15,6 +25,36 @@ public class CargadorVE {
     private double potenciaMaxima;
     private tipoUbicacion ubicacion;
     private double potenciaActual;
+
+    private Vector<RegistroSesion> bitacora;
+
+    public class RegistroSesion {
+        private int idRegsistro;
+        private String evento;
+        private boolean valido;
+        private String fabricanteSnap;
+        private int anioInstalacionSnap;
+        private double potenciaActualSnap;
+        
+
+        public RegistroSesion(String fechaHora, double energiaConsumida, double tiempoCarga) {
+            this.fechaHora = fechaHora;
+            this.energiaConsumida = energiaConsumida;
+            this.tiempoCarga = tiempoCarga;
+        }
+
+        public String getFechaHora() {
+            return fechaHora;
+        }
+
+        public double getEnergiaConsumida() {
+            return energiaConsumida;
+        }
+
+        public double getTiempoCarga() {
+            return tiempoCarga;
+        }
+    }
 
 
     
@@ -138,11 +178,5 @@ public class CargadorVE {
         return energiaConsumida * costoKWh;
     }
 
-    public 
 
-    public
-
-    public enum TipoConector {TIPO_1, TIPO_2, CCS2, CHADEMO, GBT}
-    public enum TipoCargador {MURAL, PEDESTAL, RAPIDO_DC, ULTRARRAPIDO, PORTATIL, BIDIRECCIONAL_V2G}
-    public enum tipoUbicacion {CENTRO_COMERCIAL, UNIVERSIDAD, ESTACION_SERVICIO, PARQUEADERO_PUBLICO, RESIDENCIAL, HOTEL, TERMINAL, FLOTA_CORPORATIVA}
 }
