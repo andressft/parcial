@@ -35,13 +35,32 @@ public class CargadorVE {
         private String fabricanteSnap;
         private int anioInstalacionSnap;
         private double potenciaActualSnap;
-        
 
-        public RegistroSesion(String fechaHora, double energiaConsumida, double tiempoCarga) {
-            this.fechaHora = fechaHora;
-            this.energiaConsumida = energiaConsumida;
-            this.tiempoCarga = tiempoCarga;
+
+        public RegistroSesion(String evento, boolean valido) {
+            contadorRegistros++;
+            this.idRegsistro = contadorRegistros;
+            this.evento = evento;
+            this.valido = valido;
+            this.fabricanteSnap = fabricante;
+            this.anioInstalacionSnap = anioInstalacion;
+            this.potenciaActualSnap = potenciaActual;
         }
+
+        public bolean isValido() {
+            return valido;
+        }
+
+        public double getPotenciaActualSnap() {
+            return potenciaActualSnap;
+        }
+
+        public String describir (){
+            return String.format(Reg #%d: Evento: %s, Valido: %b, Fabricante: %s, Año Instalación: %d, Potencia Actual: %.2f kW",
+                    idRegsistro, evento, valido, fabricanteSnap, anioInstalacionSnap, potenciaActualSnap);
+
+        }
+                  
 
         public String getFechaHora() {
             return fechaHora;
