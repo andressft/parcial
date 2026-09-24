@@ -81,6 +81,9 @@ public class App {
         CargadorVE[] fUbi = CargadorVE.filtrar(flota, Ubicacion.UNIVERSIDAD);
         System.out.println(String.format("[P18] Filtros -> TIPO_2: %d | MURAL: %d | UNIVERSIDAD: %d",
                 fConector.length, fTipo.length, fUbi.length));
+        System.out.println("  Fabricantes TIPO_2: " + fabricantes(fConector));
+        System.out.println("  Fabricantes MURAL: " + fabricantes(fTipo));
+        System.out.println("  Fabricantes UNIVERSIDAD: " + fabricantes(fUbi));
 
         System.out.println("[P19] Valores C5 (Constructor Reducido):");
         c5.mostrar(false);
@@ -150,6 +153,11 @@ public class App {
         System.out.println("[X04] Flota extendida creada con éxito. Tamaño: " + flotaExtendida.length);
 
         System.out.println("[X05] Estadísticas de Flota Extendida:");
+        int[] conteoTiposExt = CargadorVE.contarPorTipo(flotaExtendida);
+        System.out.println("  Conteo por tipo:");
+        for (int i = 0; i < TipoCargador.values().length; i++) {
+            System.out.println("    " + TipoCargador.values()[i] + ": " + conteoTiposExt[i]);
+        }
         System.out.println(String.format("  Promedio potencia: %.2f kW", CargadorVE.promedioPotencia(flotaExtendida)));
         System.out.println("  Mayor potencia: " + CargadorVE.mayorPotencia(flotaExtendida).getFabricante());
         System.out.println("  Excesos sobre límite: " + CargadorVE.excesosDePotenciaContratada(flotaExtendida));
@@ -158,5 +166,16 @@ public class App {
         System.out.println(" Total Cargadores: " + CargadorVE.getTotalCargadores());
         System.out.println(" Total Registros: " + CargadorVE.contadorRegistros);
         c6.mostrar(true);
+    }
+
+    private static String fabricantes(CargadorVE[] cargadores) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < cargadores.length; i++) {
+            if (i > 0) {
+                sb.append(", ");
+            }
+            sb.append(cargadores[i].getFabricante());
+        }
+        return sb.toString();
     }
 }
