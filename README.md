@@ -2,8 +2,8 @@
 
 **Universidad Santiago de Cali** · Facultad de Ingeniería · Algoritmia y Programación 2 · Programación Orientada a Objetos
 
-- **Nombre:** COMPLETAR-NOMBRE-COMPLETO
-- **Código:** COMPLETAR-CODIGO
+- **Nombre:** Andrés Julián Jiménez
+- **Código:** 1107851401
 - **N:** 1 (d1 = 0, d2 = 1)
 - **r:** N mod 4 = 1
 - **Ruta asignada:** r = 1 → `promedioVoltajePorConector(CargadorVE[] flota, TipoConector conector)`, usando el conector cuyo `ordinal()` es N mod 5 (TIPO_2).
